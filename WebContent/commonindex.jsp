@@ -171,6 +171,7 @@ font-size: 18px;
 <div class="container-fluid">
 <div class="row">
  <div class="col-md-1" style="background-color: "> 
+     
   </div>
  <!--中间栏  -->
  
@@ -258,7 +259,9 @@ font-size: 18px;
  </div>
     
     <!-- 右边栏 -->
-    <div class="col-md-4"style="background-color:">
+      
+   <div class="col-md-4"style="background-color:">
+ 
     <legend style="margin-top: 15px;">站外信息</legend>
     <!--标签页 -->
     
@@ -351,9 +354,9 @@ font-size: 18px;
       </div>
     <div class="container-fluid">
      <h3>本站开源地址:</h3>
-     <p style="font-size: 20px;"><a href="https://github.com/LornaLiang">梁娜的GitHub</a></p>
-     </div>
-    </div><!--三栏式 -->
+     <p style="font-size: 20px;"><a href="https://github.com/LornaLiang/diplomaproject">梁娜的GitHub</a></p>
+     </div>      
+  </div><!--三栏式 -->
 
 </div>
 

@@ -35,13 +35,14 @@
  </ul>
    </div>
    <div>
-  <form action="<%= request.getContextPath()%>/manag/album_edit?id=<%=album.getId() %>" method="post">
+  <form action="<%= request.getContextPath()%>/manag/album_edit" method="post" enctype="multipart/form-data">
       <div class="modal-body">
         <div>
          <label style="font-size: 15px">标题:</label>
          <input style="display: inline;font-size:15px;width:250px;" 
          name="title" type="text" 
          class="form-control" value="<%=album.getTitle()%>"/>
+         <input type="hidden" value="<%=album.getId() %>" name="id">
         </div>
         <div id="pic_div" style="padding-top: 5px;" >
          <label style="font-size: 15px">图片: </label>
@@ -54,6 +55,11 @@
         </div>
         <div style="padding-top: 5px">
          <button id="upload" onclick="return false;">上传</button>
+        </div>
+        <div style="padding-top: 10px">
+        <button>时间</button>
+        <input name="create_time" type="datetime" id="getTime">
+                
         </div>
     </div>
      <input type="hidden" name="userType" value="1">
@@ -73,7 +79,24 @@
 
 
 </div>
+<script type="text/javascript">
 
+//获取时间
+window.onload = function(){
+	function getDate(){
+	debugger;
+ var today = new Date(); 
+ var date; 
+ date = (today.getFullYear()) +"-" + (today.getMonth() + 1 ) + "-" + today.getDate() + "-" + today.toLocaleTimeString(); 
+ return date;
+ }
+ window.setInterval(function(){
+ document.getElementById("getTime").value=getDate();
+ }, 1000);
+}
+
+
+</script>
 
 
    

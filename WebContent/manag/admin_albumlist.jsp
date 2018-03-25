@@ -46,8 +46,8 @@
                     <th>序号</th>
                     <th>标题</th>
                     <th>图片</th>
-                    <th>点赞数</th>
                     <th>创建时间</th>
+                    
                     <th>操作</th>
                 </tr>
                 </thead>               
@@ -70,8 +70,8 @@
                          <img src="<%= request.getContextPath()%>/images<%=album.getUrl()%>/<%=album.getPhotoname()%>" height="30px" style="height: 30px">
                      </a>
 					</td>
-					<td><%= album.getAgree_with_times()%></td>
 					<td><%= album.getCreate_time()%></td>
+					
 					<td>
 					 
                         <a href="<%=request.getContextPath()%>/manag/album_detail?id=<%= album.getId()%>">修改</a>
@@ -145,7 +145,8 @@
         </div>
         <div style="padding-top: 10px">
         <button>时间</button>
-        <input name="create_time" type="datetime" id="getBookTime">
+        <input name="create_time" type="datetime" id="getTime">
+                
         </div>
     </div>
      
@@ -184,7 +185,7 @@ window.onload = function(){
  return date;
  }
  window.setInterval(function(){
- document.getElementById("getBookTime").value=getDate();
+ document.getElementById("getTime").value=getDate();
  }, 1000);
 }
 </script>

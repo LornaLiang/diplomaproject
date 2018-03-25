@@ -41,7 +41,7 @@ public class BlogInputSaServlet extends HttpServlet {
 		String in=new String(i.getBytes("ISO-8859-1"),"utf-8");
 		String input="%"+in+"%";
 		//获取输入框的字段
-        System.out.println(input+"%%%%");
+        //System.out.println(input+"%%%%");
 		List<Blog> list=dao.finds(input);
 		request.setAttribute("list", list);	
 	

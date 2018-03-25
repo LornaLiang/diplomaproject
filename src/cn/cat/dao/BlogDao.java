@@ -11,4 +11,5 @@ public interface BlogDao extends BaseDao<Blog> {
 	public List<Blog> findAll(Long... ids) throws DaoException; 
     public List<Blog> find(String type) throws DaoException;
     public List<Blog> finds(String input) throws DaoException;
+    public List<Blog> findRead(Long... ids) throws DaoException;
 }

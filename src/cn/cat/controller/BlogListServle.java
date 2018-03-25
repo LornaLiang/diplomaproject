@@ -22,7 +22,7 @@ import cn.cat.entity.common.Page;
 public class BlogListServle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BlogDao dao = (BlogDao) DaoFactory.getInstance("blogDao");
-	private InfoDao daoa = (InfoDao) DaoFactory.getInstance("infoDao");
+	
     /**
      * @see HttpServlet#HttpServlet()
      */

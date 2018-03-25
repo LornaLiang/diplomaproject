@@ -340,6 +340,7 @@ public abstract class BaseDaoImpl<T extends Entity> implements BaseDao<T> {
 	}
 
 	@Override
+	//分页
 	public Page<T> findAll(int page, int size) throws DaoException {
 		Page<T> pager = new Page<T>(page, size);
 		
@@ -375,6 +376,10 @@ public abstract class BaseDaoImpl<T extends Entity> implements BaseDao<T> {
 		return pager;
 	}
 
+	
+	
+	
+	
 	@Override
 	public void update(String sql, Object... paramValues) throws DaoException {
 		Connection conn = null;
@@ -424,6 +429,13 @@ public abstract class BaseDaoImpl<T extends Entity> implements BaseDao<T> {
 		return list;
 	}
 	
+	
+	
+	private Object getClick_times() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	@Override
 	public T findOne(String sql, Object... paramValues ) throws DaoException {
 		T entity = null;

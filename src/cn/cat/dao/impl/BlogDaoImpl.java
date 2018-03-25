@@ -97,9 +97,17 @@ public class BlogDaoImpl extends BaseDaoImpl<Blog> implements BlogDao{
 		
 		return list;
 	}
-	
-	
-	
+//根据阅读量排序
+	public List<Blog> findRead(Long... ids) throws DaoException {
+	    List<Blog> list = null;
+			
+	    StringBuilder sql = new StringBuilder("SELECT * FROM ");
+		sql.append(getTableName());
+		sql.append(" ORDER BY click_times");
+		sql.append(" DESC ");
+		sql.append(" LIMIT 5");
+		return list;
+	}
 	
 		
 	}

@@ -39,20 +39,10 @@ public class CommentAddServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request,response);
-	
-	
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-				
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
+	//	response.setCharacterEncoding("UTF-8");
         Long blog_id=Long.parseLong(request.getParameter("blog_id"));
         String content = request.getParameter("content");
 		String username = request.getParameter("username");
@@ -69,8 +59,8 @@ public class CommentAddServlet extends HttpServlet {
 		comm.setBlog_id(blog_id);
 		dao.save(comm);
 	    System.out.println(content);
-		request.getRequestDispatcher("/web/list_comment?id="+blog_id).forward(request, response);
-			
+		
+	    	
 		//统计对应评论数量
 		String idStr = request.getParameter("blog_id");	
 		Blog blog = daob.findOne(Long.valueOf(idStr));
@@ -100,12 +90,22 @@ public class CommentAddServlet extends HttpServlet {
 		   int read=blog.getClick_times()-1;
 		  
 		   blog.setClick_times(read);
+		   request.getRequestDispatcher("/web/list_comment?id="+blog_id).forward(request, response);	
 		   
-		   
-		
-		
-		
+		 
 		
 	}
 
+	
+	
+	
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+				
+		doGet(request,response);	
+}
 }

@@ -2,6 +2,7 @@ package cn.cat.controller;
 
 import java.io.IOException;
 import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,24 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.cat.dao.BlogDao;
-import cn.cat.dao.CommentDao;
-import cn.cat.dao.common.DaoException;
 import cn.cat.dao.common.DaoFactory;
 import cn.cat.entity.Blog;
-import cn.cat.entity.Comment;
 
 /**
- * Servlet implementation class CommentListServlet
+ * Servlet implementation class BlogClickServlet
  */
-@WebServlet("/web/list_comment")
-public class CommentListServlet extends HttpServlet {
+@WebServlet("/web_click_order")
+public class BlogClickServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private CommentDao dao=(CommentDao) DaoFactory.getInstance("commentDao");
-	private BlogDao daos=(BlogDao) DaoFactory.getInstance("blogDao");
+	private BlogDao dao = (BlogDao) DaoFactory.getInstance("blogDao");
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommentListServlet() {
+    public BlogClickServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,31 +34,18 @@ public class CommentListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String id=request.getParameter("blog_id");
-	     List<Comment> list = dao.find(Long.parseLong(id));
-	     //for(Comment c:list){
-	     //输出测试System.out.println(c.getContent()+"**********");
-	     //}	
-	    
-			response.setContentType("text/html;charset=UTF-8");
-			request.setCharacterEncoding("UTF-8");
-			
-			Blog blog = daos.findOne(Long.valueOf(id));
-			int read=blog.getClick_times();
-			//System.out.println("read="+read);		
-			int r=read-1;
-		   	//System.out.println("r="+r);
-		    blog.setClick_times(r);
-		    try {
-				daos.update(blog);
-				
-				
-			} catch (DaoException e) {
-				e.printStackTrace();
-			}
-		    request.setAttribute("list", list);
-		    request.getRequestDispatcher("/web_blog_detail?id="+id).forward(request, response);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		request.setCharacterEncoding("UTF-8");	
+		
+		List<Blog> list = dao.findRead();
+		
+		request.setAttribute("list",list);
+		
+		request.getRequestDispatcher("/commonindex.jsp").forward(request, response);
+	
+		
+		
 	}
 
 	/**
